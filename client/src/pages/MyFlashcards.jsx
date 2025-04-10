@@ -5,6 +5,7 @@ import CreateFlashcard from "../components/CreateFlashcard.jsx"; // Component to
 import "./MyFlashcards.css"; // CSS for styling the Flashcards page
 import { useAuth0 } from "@auth0/auth0-react";
 import Chatbot from "../components/Chatbot.jsx";
+import LoginButton from "../components/LoginButton.jsx";
 
 function Flashcards() {
   // State to hold the sample flashcards
@@ -50,6 +51,13 @@ function Flashcards() {
   // Hook to navigate between pages
   const navigate = useNavigate();
 
+  if (!user)
+    return (
+  <div className="profileInfo">
+    <p>You must be logged in to access the profile page.</p>
+    <LoginButton additionalStyles="profile-button" />
+  </div>
+  );
   return (
     <div className="app">
       {/* If there are no groups, display a button to navigate to the Edit Flashcards page */}

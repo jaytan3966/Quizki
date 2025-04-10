@@ -137,3 +137,10 @@
 .back-button:hover {
   background-color: #3a5a80;
 }
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
+}

@@ -5,6 +5,7 @@ import FlashcardList from "../components/FlashcardList.jsx"; // Component to dis
 import CreateFlashcard from "../components/CreateFlashcard.jsx"; // Component to create a flashcard
 import "./EditCards.css"; // CSS for styling the Create page
 import Chatbot from "../components/Chatbot.jsx";
+import LoginButton from "../components/LoginButton.jsx";
 
 export default function Create() {
   const [SAMPLE_FLASHCARDS, setFlashcards] = useState([]);
@@ -145,6 +146,14 @@ export default function Create() {
     }
   };
 
+  if (!user)
+    return (
+  <div className="profileInfo">
+    <p>You must be logged in to access the profile page.</p>
+    <LoginButton additionalStyles="profile-button" />
+  </div>
+  );
+  
   return (
     <div className="app">
       {/* Choose page: Decide to create a group or add to an existing group */}

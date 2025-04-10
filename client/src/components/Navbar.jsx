@@ -49,14 +49,14 @@ export const Navbar = () => {
             Gacha
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/profile"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
             Profile
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
