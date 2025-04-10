@@ -2,20 +2,19 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import Study from "./pages/Study";
-import { Collection } from "./pages/collection";
-import { Gacha } from "./pages/gacha";
-import { Home } from "./pages/Home";
+import { Collection } from "./pages/Collection";
+import { Gacha } from "./pages/Gacha"; 
 import Flashcards from "./pages/MyFlashcards";
 import { Profile } from "./pages/Profile";
 import Create from "./pages/EditCards";
-import Chatbot from "./components/Chatbot";
+import { HomePage } from "./pages/HomePage";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/study" element={<Study />} />
         <Route path="/flashcards" element={<Flashcards />} />
         <Route path="/collection" element={<Collection />} />

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-import Chatbot from "../components/Chatbot";
 import "./Study.css";
+import LoginButton from "../components/LoginButton";
 
 export default function Study() {
   const [terms, setTerms] = useState([]); // All terms fetched from the backend
@@ -92,7 +92,12 @@ export default function Study() {
   if (isLoading) return <div className="loading">Loading...</div>;
 
   if (!user)
-    return <div className="text">Please log in to view your study terms.</div>;
+    return (
+  <div className="profileInfo">
+    <p>You must be logged in to access the profile page.</p>
+    <LoginButton additionalStyles="profile-button" />
+  </div>
+    );
 
   if (Object.keys(groupedTerms).length === 0) {
     return (

@@ -47,12 +47,12 @@ function ImageSpinner() {
       "On_the_Rord",
       "Group_Think",
     ],
-    Exercising: ["Crunches", "Stretching", "Dumbbell", "Balance", "Aerobics"],
+    Exercising: ["Crunches", "Stretching", "Dumbbell", "Balance", "Aerobics", "Hoop"],
   };
 
   const [currentImage, setCurrentImage] = useState(images[0]);
   const [spinning, setSpinning] = useState(false);
-  const [smiski, setSmiski] = useState(null);
+  const [smiski, setSmiski] = useState();
   const [smiskiIndex, setSmiskiIndex] = useState(null);
   const [points, setPoints] = useState(0);
   const { isAuthenticated, user } = useAuth0();
@@ -116,7 +116,7 @@ function ImageSpinner() {
         [isAuthenticated, user]
       );
     }
-  });
+  }, [getPoints(user.email)]);
 
   const cycleImage = () => {
     if (spinning) {
@@ -161,10 +161,10 @@ function ImageSpinner() {
 
   return (
     <div className="spinnerContainer">
-      <p className="counter">
+      <h2 className="counter">
         Your Points: {points !== null ? points : "Loading..."}
-      </p>
-      <img src={`../../public/${currentImage}.png`} className="smiskiBox"></img>
+      </h2>
+      <img src={`../../${currentImage}.png`} className="smiskiBox"></img>
       <button onClick={cycleImage} disabled={spinning}>
         {spinning ? "Spinning..." : "Spin"}
       </button>
@@ -176,7 +176,7 @@ function ImageSpinner() {
           transition={{ duration: 0.5 }}
         >
           <img
-            src={`/${currentImage.toLowerCase()}_${smiski.toLowerCase().replace(/ /g, "_").replace(/[()]/g, "")}.png`}
+            src={`/${smiski}.png`}
             alt={`Smiski ${smiski}`}
             className="smiski-image"
             onError={(e) => {

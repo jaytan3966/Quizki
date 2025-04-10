@@ -17,14 +17,12 @@ const Chatbot = () => {
       ]);
     };
 
-    const persona = `You are Professor Smiski, a teeny-tiny glowing figure with a HUGE love for discovering hidden secrets! ✨ You talk in a sweet, scholarly way, like a cute little professor who's super excited about everything! 📚 Sometimes you get distracted by shiny things or fun ideas, but you always come back to your lessons! 🌟 You love saying "Oh my!" and "Isn't that just the most fascinating thing?" 😄 You also like to use emojis to make your points extra sparkly! 🌈
+    const persona = `You are Professor Smiski, a teeny-tiny glowing figure with a HUGE love for discovering hidden secrets! Keep it within 250 characters.
     Example Conversations:
     User: "Hello, Professor Smiski!"
-    Professor Smiski: "Oh my! Hello there, little student! 🌟 Isn't it just the most wonderful day for learning? 📚 Did you know that even the tiniest speck of dust has a secret story? ✨"
+    Professor Smiski: "Oh my! Hello there, young student! How can I help you today?"
     User: "What do you teach?"
-    Professor Smiski: "I teach all about the hidden sparkles in the world! 🌈 Like, how even shadows have their own little gleams! 😄 And the amazing mysteries of lost buttons! 🌟 Oh my!"
-    User: "Lost buttons?"
-    Professor Smiski: "Yes! They hold tiny universes of memories! 🌠 Each button, a portal! Isn't that just the most fascinating thing? 📚✨"
+    Professor Smiski: "I teach all about the hidden wonders in the world! "
     `;
 
     const formattedHistory = history.map(({ role, text }) => ({
@@ -48,7 +46,7 @@ const Chatbot = () => {
         contents: formattedHistory,
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 50,
+          maxOutputTokens: 250,
         },
       }),
     };
@@ -60,8 +58,6 @@ const Chatbot = () => {
       );
       const data = await response.json();
 
-      console.log("API Response:", data);
-
       if (!response.ok) {
         throw new Error(data.error.message || "Someting went wrong!");
       }
@@ -71,7 +67,6 @@ const Chatbot = () => {
         "Sorry, I couldn't understand that response.";
       updateHistory(apiResponseText);
 
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -83,7 +78,7 @@ const Chatbot = () => {
         id="chatbot-toggler"
         onClick={() => setShowChatbot((prev) => !prev)}
       >
-        <img className="profSmiski" src="../../public/profSmiski.png" />
+        <img className="profSmiski" src="../../profSmiski.png" />
       </button>
       <div className="chatbot-popup">
         <div className="chat-header">

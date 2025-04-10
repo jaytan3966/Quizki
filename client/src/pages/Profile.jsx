@@ -23,12 +23,12 @@ export const Profile = () => {
   const [numCollected, setNumCollected] = useState(null);
 
   useEffect(() => {
+    
     if (isAuthenticated && user?.email) {
       getPoints(user.email).then(
         (fetchedPoints) => {
           setPoints(fetchedPoints);
-        },
-        [isAuthenticated, user]
+        }, [isAuthenticated, user]
       );
     }
   });
@@ -38,8 +38,7 @@ export const Profile = () => {
       getNumCollected(user.email).then(
         (fetchedNumCollected) => {
           setNumCollected(fetchedNumCollected);
-        },
-        [isAuthenticated, user]
+        }, [isAuthenticated, user]
       );
     }
   });
@@ -64,7 +63,6 @@ export const Profile = () => {
   } else {
     return (
       <div className="profileInfo">
-        <p></p>
         <p>You must be logged in to access the profile page.</p>
         <LoginButton additionalStyles="profile-button" />
         <Chatbot />

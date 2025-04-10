@@ -3,37 +3,6 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 // Flashcards data
 
-// async function getTerms(){
-//   const { user } = useAuth0();
-//   let response = await fetch(`https://localhost:5050/records/users/${user.email}`);
-//   const result = await response.json();
-//   let terms = result[0].terms;
-
-//   let questions = [];
-//   let answers = [];
-//   let groups = [];
-
-//   let flashcards = [];
-//   terms.forEach(languageGroup => {
-//     const languageType = Object.keys(languageGroup)[0];
-//     const termPairs = languageGroup[languageType];
-    
-//     Object.entries(termPairs).forEach(([question, answer]) => {
-//       questions.push(question);
-//       answers.push(answer);
-//       groups.push(languageType);
-//     });
-//   });
-// }
-// export const SAMPLE_FLASHCARDS = [
-  
-//   { id: 1, question: 'What is 2 + 2?', answer: '4', group: 'Math' },
-//   { id: 2, question: 'What is the capital of France?', answer: 'Paris', group: 'History' },
-//   { id: 3, question: 'What is H2O?', answer: 'Water', group: 'Science' },
-//   { id: 4, question: 'What is 5 x 5?', answer: '25', group: 'Math' },
-//   { id: 5, question: 'Who discovered gravity?', answer: 'Isaac Newton', group: 'Science' },
-// ];
-
 export async function SAMPLE_FLASHCARD(){
   const { user } = useAuth0();
   let response = await fetch(`https://localhost:5050/records/users/${user.email}`);
