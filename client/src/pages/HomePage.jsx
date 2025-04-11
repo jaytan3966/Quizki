@@ -19,6 +19,32 @@ async function getNumCollected(email) {
   return result[0].collected.length;
 }
 
+async function fetchData(email){
+  
+  // Fetch unlocked Smiskis
+  const response = await fetch(
+    `http://localhost:5050/records/users/${email}`
+  );
+  const result = await response.json();
+  const smiskisData = (result[0]?.collected || []);
+  const uniqueSmiskisData = smiskisData.filter(
+    (item, index, self) => index === self.findIndex((t) => t.name === item.name)
+  );
+  const terms = result[0]?.terms || [];
+
+  const formattedFlashcards = terms.flatMap((languageGroup) => {
+    const [type, pairs] = Object.entries(languageGroup)[0];
+    return Object.entries(pairs).map(([q, a], i) => ({
+      id: `${type}-${i}`,
+      question: q,
+      answer: a,
+      group: type.charAt(0).toUpperCase() + type.slice(1),
+    }));
+  });
+  return [uniqueSmiskisData, formattedFlashcards];
+
+}
+
 export const HomePage = () => {
   const { isAuthenticated, user } = useAuth0();
 
@@ -27,7 +53,6 @@ export const HomePage = () => {
 
   const [smiskis, setSmiskis] = useState([]); // State for unlocked Smiskis
   const [flashcards, setFlashcards] = useState([]); // State for flashcards
-  const [loading, setLoading] = useState(true);
   
   //fetch profile info
   useEffect(() => {
@@ -38,11 +63,6 @@ export const HomePage = () => {
             setPoints(fetchedPoints);
           }, [isAuthenticated, user]
         );
-      }
-    });
-  
-    useEffect(() => {
-      if (isAuthenticated && user.email) {
         getNumCollected(user.email).then(
           (fetchedNumCollected) => {
             setNumCollected(fetchedNumCollected);
@@ -53,44 +73,19 @@ export const HomePage = () => {
 
   // Fetch Smiskis and Flashcards
   useEffect(() => {
-    async function fetchData(){
-      try {
-        // Fetch unlocked Smiskis
-        const response = await fetch(
-          `http://localhost:5050/records/users/${user.email}`
-        );
-        const result = await response.json();
-        const smiskisData = (result[0]?.collected || []);
-        const uniqueSmiskisData = smiskisData.filter(
-          (item, index, self) => index === self.findIndex((t) => t.name === item.name)
-        );
-        const terms = result[0]?.terms || [];
-    
-        const formattedFlashcards = terms.flatMap((languageGroup) => {
-          const [type, pairs] = Object.entries(languageGroup)[0];
-          return Object.entries(pairs).map(([q, a], i) => ({
-            id: `${type}-${i}`,
-            question: q,
-            answer: a,
-            group: type.charAt(0).toUpperCase() + type.slice(1),
-          }));
-        });
-    
-        setSmiskis(uniqueSmiskisData);
-        setFlashcards(formattedFlashcards);
-        
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
     if (isAuthenticated && user?.email) {
-      fetchData();
-    } else {
-      console.log("Error: User is not authenticated or email is missing");
+      const fetchUserData = async () => {
+        try {
+          const [smiskisData, flashcardsData] = await fetchData(user.email);
+          setFlashcards(flashcardsData);
+          setSmiskis(smiskisData);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+      fetchUserData();
     }
-  }, []);
+  }, [isAuthenticated, user]);
 
   if (!user)
     return (

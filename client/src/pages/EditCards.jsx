@@ -50,13 +50,10 @@ export default function Create() {
     fetchFlashcards();
   }, [user?.email]);
 
-  // State to track the current page ('choose', 'create-group', 'create', or 'list')
   const [currentPage, setCurrentPage] = useState("choose");
 
-  // State to track the selected group
   const [selectedGroup, setSelectedGroup] = useState(null);
 
-  // Hook to navigate between routes
   const navigate = useNavigate();
 
   // Function to add a new flashcard to the selected group
@@ -69,7 +66,6 @@ export default function Create() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ question, answer }),
         }
       );
 
@@ -156,37 +152,41 @@ export default function Create() {
   
   return (
     <div className="app">
-      {/* Choose page: Decide to create a group or add to an existing group */}
       {currentPage === "choose" && (
         <div className="choose-container view-flashcards-button">
-          <h2>What would you like to do?</h2>
-          <button onClick={() => setCurrentPage("create-group")}>
-            Create a New Group
-          </button>
-          {/* Conditionally render the text and group list only if there are groups */}
-          {groups.length > 0 && (
-            <>
-              <h3>Or choose an existing group:</h3>
-              <div className="group-list view-flashcards-button">
-                {groups.map((group) => (
-                  <button
-                    key={group}
-                    onClick={() => {
-                      setSelectedGroup(group);
-                      setCurrentPage("create");
-                    }}
-                  >
-                    {group}
-                  </button>
-                ))}
+          {groups.length > 0 ? (
+              <div>
+                <h2>Your Flashcard Groups</h2>
+                
+                <div className="group-list view-flashcards-button group-flashcards">
+                  {groups.map((group) => (
+                    <button
+                      key={group}
+                      onClick={() => {
+                        setSelectedGroup(group);
+                        setCurrentPage("create");
+                      }}
+                    >
+                      {group}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </>
+          ) : (
+            <h2 className="emptyGroups">No groups available for to add terms. Please add some groups to get
+            started!</h2>
           )}
-          {/* Clear All Button */}
-          <div className="clear-all-button">
-            <button className="clear-all-button" onClick={clearAll}>
+          
+          <div className="create-view-container">
+            <button onClick={() => setCurrentPage("create-group")}>
+              Create a New Group
+            </button>
+            <button onClick={() => navigate("/flashcards")} className="view-flashcards-button">View Flashcards</button>
+          
+            <button onClick={clearAll}>
               Clear All
             </button>
+          
           </div>
         </div>
       )}
@@ -225,10 +225,6 @@ export default function Create() {
         <FlashcardList flashcards={SAMPLE_FLASHCARDS} />
       )}
 
-      {/* Button to navigate to the Flashcards page */}
-      <div className="view-flashcards-button">
-        <button onClick={() => navigate("/flashcards")}>View Flashcards</button>
-      </div>
       <Chatbot />
     </div>
   );

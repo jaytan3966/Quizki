@@ -81,7 +81,7 @@ body{
 .group-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+
     justify-content: center; /* Center the group buttons */
 }
 
@@ -120,9 +120,7 @@ body{
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    
 }
-
 .create-group-container button:hover {
     background-color: #5a6268;
 }
@@ -136,39 +134,34 @@ body{
     padding: 10px 20px;
     color: #2d4849;
     flex: column;
-    width: 30%;
-    height: 80%;
+    width: 22%;
+    height: 100%;
     margin: auto;
     margin-top: 10px;
-    
 }
-
+.group-flashcards{
+  height: 150px;
+  margin-bottom: 10px;
+}
 .view-flashcards-button button:hover {
     cursor:pointer;
     background-color: #2d4849;
     color: white;
+}
+.create-view-container{
+  display: flex;
+  gap: 10px;          
+  align-items: center;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
 }
 
 /* Ensure the parent container takes up the full height of the viewport */
 .app {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Make the container span the full height of the viewport */
-}
-
-/* Position the clear-all button at the bottom */
-.clear-all-button {
-    padding: 10px 20px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: center;
-}
-
-.clear-all-button button:hover {
-    background-color: #cc0000;
-    cursor: pointer;
 }
 
 .create-group-container {
@@ -186,7 +179,17 @@ body{
     margin-bottom: 20px;
     color: #333;
   }
-  
+  .emptyGroups{
+    display: flex;
+    flex-direction: column; /* Stack the text and button vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 70vh; /* Take up most of the viewport height */
+    text-align: center; /* Center the text */
+    color: #2d4849; /* Text color */
+    font-size: 1.5rem;
+  }
+ 
   .form-container {
     display: flex;
     flex-direction: column;
