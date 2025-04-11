@@ -6,13 +6,13 @@ import LoginButton from "../components/LoginButton";
 
 export default function Study() {
   const [terms, setTerms] = useState([]); // All terms fetched from the backend
-  const [groupedTerms, setGroupedTerms] = useState({}); // Terms grouped by language
+  const [groupedTerms, setGroupedTerms] = useState({}); // Terms grouped by language (only non-empty groups)
   const [selectedGroup, setSelectedGroup] = useState(null); // Selected group for the test
   const [answers, setAnswers] = useState({}); // User answers
   const { user, isLoading } = useAuth0();
   const navigate = useNavigate();
 
-  // Fetch terms from the backend
+  // Fetch terms from the backend and filter out empty groups
   async function fetchTerms() {
     try {
       const response = await fetch(
@@ -26,17 +26,20 @@ export default function Study() {
 
       userTerms.forEach((languageObj) => {
         Object.entries(languageObj).forEach(([language, terms]) => {
-          grouped[language] = grouped[language] || [];
-          Object.entries(terms).forEach(([term, translation]) => {
-            const termObj = {
-              id: `${language}-${term}`, // Unique ID
-              language,
-              term,
-              translation,
-            };
-            grouped[language].push(termObj);
-            initialAnswers[`${language}-${term}`] = ""; // Initialize answers
-          });
+          // Only create group if there are terms
+          if (terms && Object.keys(terms).length > 0) {
+            grouped[language] = grouped[language] || [];
+            Object.entries(terms).forEach(([term, translation]) => {
+              const termObj = {
+                id: `${language}-${term}`, // Unique ID
+                language,
+                term,
+                translation,
+              };
+              grouped[language].push(termObj);
+              initialAnswers[`${language}-${term}`] = ""; // Initialize answers
+            });
+          }
         });
       });
 
@@ -93,10 +96,10 @@ export default function Study() {
 
   if (!user)
     return (
-  <div className="profileInfo">
-    <p>You must be logged in to access the profile page.</p>
-    <LoginButton additionalStyles="profile-button" />
-  </div>
+      <div className="profileInfo">
+        <p>You must be logged in to access the profile page.</p>
+        <LoginButton additionalStyles="profile-button" />
+      </div>
     );
 
   if (Object.keys(groupedTerms).length === 0) {
@@ -143,7 +146,7 @@ export default function Study() {
                   <h2>{index + 1}.</h2>
                 </div>
                 <div className="question-content">
-                  <p>{term.term}</p> {/* Removed the group name */}
+                  <p>{term.term}</p>
                   <input
                     type="text"
                     value={answers[term.id] || ""}
