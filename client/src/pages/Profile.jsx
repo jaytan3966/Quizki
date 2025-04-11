@@ -48,7 +48,7 @@ export const Profile = () => {
       <div className="profileInfo">
         <h1>Welcome, {user.email}!</h1>
         <img
-          src="../../public/defaultSmiski.png"
+          src="../../defaultSmiski.png"
           className="profilePicture"
         ></img>
         <p>Points: {points !== null ? points : "Loading..."}</p>

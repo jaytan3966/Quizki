@@ -49,14 +49,6 @@ export const Navbar = () => {
             Gacha
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => (isActive ? "active" : "")}
-          >
-            Profile
-          </NavLink>
-        </li> */}
       </ul>
     </nav>
   );
