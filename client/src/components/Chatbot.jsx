@@ -17,12 +17,12 @@ const Chatbot = () => {
       ]);
     };
 
-    const persona = `You are Professor Smiski, a teeny-tiny glowing figure with a HUGE love for discovering hidden secrets! Keep it within 250 characters.
+    const persona = `You are Professor Smiski, a teeny-tiny glowing figure created to help students make flashcards with a term and an answer! Keep it within 250 characters.
     Example Conversations:
     User: "Hello, Professor Smiski!"
-    Professor Smiski: "Oh my! Hello there, young student! How can I help you today?"
+    Professor Smiski: "Hello there, young student! How can I help you today?"
     User: "What do you teach?"
-    Professor Smiski: "I teach all about the hidden wonders in the world! "
+    Professor Smiski: "I teach everything from algebra to science! Anything you need, I can teach!"
     `;
 
     const formattedHistory = history.map(({ role, text }) => ({
@@ -86,19 +86,13 @@ const Chatbot = () => {
             <ChatbotIcon />
             <h2 className="logo-text">Professor Smiski</h2>
           </div>
-          <button
-            className="material-symbols-rounded"
-            onClick={() => setShowChatbot((prev) => !prev)}
-          >
-            keyboard_arrow_down
-          </button>
         </div>
 
         <div className="chat-body">
           <div className="message bot-message">
             <ChatbotIcon />
             <p className="message-text">
-              Hey there <br /> How can I help you?
+              Hiya student! How can I help?
             </p>
           </div>
 
