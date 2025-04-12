@@ -46,7 +46,7 @@ export const Collection = () => {
             alt="Airplane Smiski"
             className={dictionary["Paper_Airplane"] ? "" : "locked"}
           />
-          <p>Smiski Paper Airplane</p>
+          <p>Paper Airplane</p>
         </div>
         <div>
           <img
@@ -54,7 +54,7 @@ export const Collection = () => {
             alt="Bubbles Smiski"
             className={dictionary["Blowing_Bubbles"] ? "" : "locked"}
           />
-          <p>Smiski Blowing Bubbles</p>
+          <p>Blowing Bubbles</p>
         </div>
         <div>
           <img
@@ -62,7 +62,7 @@ export const Collection = () => {
             alt="Garden Smiski"
             className={dictionary["Gardening"] ? "" : "locked"}
           />
-          <p>Smiski Gardening</p>
+          <p>Gardening</p>
         </div>
         <div>
           <img
@@ -70,7 +70,7 @@ export const Collection = () => {
             alt="Singing Smiski"
             className={dictionary["Sing-Along"] ? "" : "locked"}
           />
-          <p>Smiski Singing Along</p>
+          <p>Singing Along</p>
         </div>
         <div>
           <img
@@ -78,7 +78,7 @@ export const Collection = () => {
             alt="Skateboard Smiski"
             className={dictionary["Skateboarding"] ? "" : "locked"}
           />
-          <p>Smiski Skateboarding</p>
+          <p>Skateboarding</p>
         </div>
         <div>
           <img
@@ -86,7 +86,7 @@ export const Collection = () => {
             alt="Sunbathe Smiski"
             className={dictionary["Sunbathing"] ? "" : "locked"}
           />
-          <p>Smiski Sunbathing</p>
+          <p>Sunbathing</p>
         </div>
       </div>
 
@@ -100,7 +100,7 @@ export const Collection = () => {
             alt="Smiski Doing Crunches"
             className={dictionary["Crunches"] ? "" : "locked"}
           />
-          <p>Smiski Doing Crunches</p>
+          <p>Doing Crunches</p>
         </div>
         <div>
           <img
@@ -108,7 +108,7 @@ export const Collection = () => {
             alt="Smiski Aerobics"
             className={dictionary["Aerobics"] ? "" : "locked"}
           />
-          <p>Smiski Aerobics</p>
+          <p>Aerobics</p>
         </div>
         <div>
           <img
@@ -116,7 +116,7 @@ export const Collection = () => {
             alt="Smiski Balance"
             className={dictionary["Balance"] ? "" : "locked"}
           />
-          <p>Smiski Balance</p>
+          <p>Balance</p>
         </div>
         <div>
           <img
@@ -124,7 +124,7 @@ export const Collection = () => {
             alt="Smiski Dumbbell"
             className={dictionary["Dumbbell"] ? "" : "locked"}
           />
-          <p>Smiski Dumbbell</p>
+          <p>Dumbbell</p>
         </div>
         <div>
           <img
@@ -132,7 +132,7 @@ export const Collection = () => {
             alt="Smiski Hoop"
             className={dictionary["Hoop"] ? "" : "locked"}
           />
-          <p>Smiski Hoop</p>
+          <p>Hoop</p>
         </div>
         <div>
           <img
@@ -140,7 +140,7 @@ export const Collection = () => {
             alt="Smiski Stretch"
             className={dictionary["Stretching"] ? "" : "locked"}
           />
-          <p>Smiski Stretch</p>
+          <p>Stretch</p>
         </div>
       </div>
 
@@ -154,7 +154,7 @@ export const Collection = () => {
             alt="Smiski Dazed"
             className={dictionary["Dazed"] ? "" : "locked"}
           />
-          <p>Smiski Dazed</p>
+          <p>Dazed</p>
         </div>
         <div>
           <img
@@ -162,7 +162,7 @@ export const Collection = () => {
             alt="Smiski With Duck"
             className={dictionary["With_Duck"] ? "" : "locked"}
           />
-          <p>Smiski With Duck</p>
+          <p>With Duck</p>
         </div>
         <div>
           <img
@@ -170,7 +170,7 @@ export const Collection = () => {
             alt="Smiski Looking"
             className={dictionary["Looking"] ? "" : "locked"}
           />
-          <p>Smiski Looking</p>
+          <p>Looking</p>
         </div>
         <div>
           <img
@@ -178,7 +178,7 @@ export const Collection = () => {
             alt="Smiski Not Looking"
             className={dictionary["Not_Looking"] ? "" : "locked"}
           />
-          <p>Smiski Not Looking</p>
+          <p>Not Looking</p>
         </div>
         <div>
           <img
@@ -186,7 +186,7 @@ export const Collection = () => {
             alt="Smiski Scrubbing"
             className={dictionary["Scrubbing"] ? "" : "locked"}
           />
-          <p>Smiski Scrubbing</p>
+          <p>Scrubbing</p>
         </div>
         <div>
           <img
@@ -194,7 +194,7 @@ export const Collection = () => {
             alt="Smiski Shampooing"
             className={dictionary["Shampoo"] ? "" : "locked"}
           />
-          <p>Smiski Shampooing</p>
+          <p>Shampooing</p>
         </div>
       </div>
 
@@ -208,42 +208,42 @@ export const Collection = () => {
             src="../../Helping_Out.png"
             className={dictionary["Helping_Out"] ? "" : "locked"}
           />
-          <p>Smiski Helping Out</p>
+          <p>Helping Out</p>
         </div>
         <div>
           <img
             src="../../Holding_In.png"
             className={dictionary["Holding_In"] ? "" : "locked"}
           />
-          <p>Smiski Holding It In</p>
+          <p>Holding It In</p>
         </div>
         <div>
           <img
             src="../../Peek-A-Boo.png"
             className={dictionary["Peek-A-Boo"] ? "" : "locked"}
           />
-          <p>Smiski Peek-A-Boo</p>
+          <p>Peek-A-Boo</p>
         </div>
         <div>
           <img
             src="../../Resting.png"
             className={dictionary["Resting"] ? "" : "locked"}
           />
-          <p>Smiski Resting</p>
+          <p>Resting</p>
         </div>
         <div>
           <img
             src="../../Little_(Smelly).png"
             className={dictionary["Little_(Smelly)"] ? "" : "locked"}
           />
-          <p>Smiski Little Smelly</p>
+          <p>Little Smelly</p>
         </div>
         <div>
           <img
             src="../../Squatting.png"
             className={dictionary["Squatting"] ? "" : "locked"}
           />
-          <p>Smiski Squating</p>
+          <p>Squating</p>
         </div>
       </div>
 
@@ -257,42 +257,42 @@ export const Collection = () => {
             src="../../Approving.png"
             className={dictionary["Approving"] ? "" : "locked"}
           />
-          <p>Smiski Approving</p>
+          <p>Approving</p>
         </div>
         <div>
           <img
             src="../../On_the_Rord.png"
             className={dictionary["On_the_Rord"] ? "" : "locked"}
           />
-          <p>Smiski On the Rord</p>
+          <p>On the Rord</p>
         </div>
         <div>
           <img
             src="../../Good_Idea.png"
             className={dictionary["Good_Idea"] ? "" : "locked"}
           />
-          <p>Smiski Good Idea</p>
+          <p>Good Idea</p>
         </div>
         <div>
           <img
             src="../../Presenting.png"
             className={dictionary["Presenting"] ? "" : "locked"}
           />
-          <p>Smiski Presenting</p>
+          <p>Presenting</p>
         </div>
         <div>
           <img
             src="../../Researching.png"
             className={dictionary["Researching"] ? "" : "locked"}
           />
-          <p>Smiski Researching</p>
+          <p>Researching</p>
         </div>
         <div>
           <img
             src="../../Group_Think.png"
             className={dictionary["Group_Think"] ? "" : "locked"}
           />
-          <p>Smiski Group Thinking</p>
+          <p>Group Thinking</p>
         </div>
       </div>
       <Chatbot />
