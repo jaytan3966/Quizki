@@ -156,7 +156,7 @@ export default function Create() {
         <div className="choose-container view-flashcards-button">
           {groups.length > 0 ? (
               <div>
-                <h2>Your Flashcard Groups</h2>
+                <h2>Edit Your Flashcard Groups</h2>
                 
                 <div className="group-list view-flashcards-button group-flashcards">
                   {groups.map((group) => (
@@ -171,28 +171,36 @@ export default function Create() {
                     </button>
                   ))}
                 </div>
+                <div className="create-view-container">
+                  <button onClick={() => setCurrentPage("create-group")}>
+                    Create a New Group
+                  </button>
+                  <button onClick={() => navigate("/flashcards")} className="view-flashcards-button">View Flashcards</button>
+                
+                  <button onClick={clearAll}>
+                    Clear All
+                  </button>
+                
+                </div>
               </div>
           ) : (
-            <h2 className="emptyGroups">No groups available for to add terms. Please add some groups to get
-            started!</h2>
+            <div>
+              <h2 className="emptyGroups">No groups available for to add terms. Please add some groups to get
+              started!</h2>
+              <div className="create-view-container">
+                <button onClick={() => setCurrentPage("create-group")}>
+                  Create a New Group
+                </button>
+              </div>
+            </div>
           )}
           
-          <div className="create-view-container">
-            <button onClick={() => setCurrentPage("create-group")}>
-              Create a New Group
-            </button>
-            <button onClick={() => navigate("/flashcards")} className="view-flashcards-button">View Flashcards</button>
-          
-            <button onClick={clearAll}>
-              Clear All
-            </button>
-          
-          </div>
         </div>
       )}
 
       {/* Create group page */}
       {currentPage === "create-group" && (
+        <div className="view-flashcards-button">
         <div className="create-group-container">
           <h2>Create a New Group</h2>
           <input
@@ -211,7 +219,10 @@ export default function Create() {
               }
             }}
           />
+        </div>
+        <div className="create-view-container">
           <button onClick={() => setCurrentPage("choose")}>Back</button>
+          </div>
         </div>
       )}
 
