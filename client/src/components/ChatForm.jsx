@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "./Chatbot.css";
 
 const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
   const inputRef = useRef();
@@ -34,7 +35,7 @@ const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
       <input
         ref={inputRef}
         type="text"
-        placeholder="Message..."
+        placeholder="Type your message..."
         className="message-input"
         required
       />
