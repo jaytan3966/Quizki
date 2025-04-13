@@ -6,7 +6,18 @@ import CreateFlashcard from "../components/CreateFlashcard.jsx"; // Component to
 import "./EditCards.css"; // CSS for styling the Create page
 import Chatbot from "../components/Chatbot.jsx";
 import LoginButton from "../components/LoginButton.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+
+const created = (text) => toast.success(`${text}`, {
+  style: { background: "#f7d79f", color: "#2d4849" , border: "1px solid #2d4849", fontFamily: "Quicksand, sans-serif"},
+  progressStyle: { background: "#2E7D32" },
+});
+const failed = (text) => toast.error(`${text}`, {
+  style: { background: "#FF0000", color: "#2d4849" , border: "1px solid #2d4849", fontFamily: "Quicksand, sans-serif"},
+  progressStyle: { background: "#2E7D32" },
+});
 export default function Create() {
   const [SAMPLE_FLASHCARDS, setFlashcards] = useState([]);
 
@@ -89,7 +100,7 @@ export default function Create() {
   // Function to create a new group
   const createGroup = async (groupName) => {
     if (!groupName.trim()) {
-      alert("Group name cannot be empty");
+      failed();
       return;
     }
 
@@ -135,10 +146,10 @@ export default function Create() {
 
       setFlashcards([]);
       setGroups([]);
-      alert("All groups and flashcards have been cleared.");
+      created("All groups and flashcards have been cleared.");
     } catch (error) {
       console.error("Error clearing all groups and flashcards:", error);
-      alert("Failed to clear all groups and flashcards.");
+      failed("Failed to clear all groups and flashcards.");
     }
   };
 
@@ -213,10 +224,10 @@ export default function Create() {
                 const groupName = e.target.value.trim();
                 try {
                   await createGroup(groupName); // Create the group
-                  alert("New group created!"); // Show success message
+                  created("Group created!"); // Show success message
                   setCurrentPage("choose"); // Navigate back to the "choose" page
                 } catch (error) {
-                  alert("Failed to create group. Please try again."); // Handle errors
+                  failed("Failed to create group. Please try again."); // Handle errors
                 }
               }
             }}
@@ -239,6 +250,15 @@ export default function Create() {
       )}
 
       <Chatbot />
+      <ToastContainer position="bottom-left" autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme='light'/>
     </div>
   );
 }
