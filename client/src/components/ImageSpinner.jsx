@@ -4,6 +4,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { motion } from "framer-motion"; // Import Framer Motion
 import "./ImageSpinner.css";
 
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 async function getPoints(email) {
   let response = await fetch(`http://localhost:5050/records/users/${email}`);
   const result = await response.json();
@@ -56,6 +59,24 @@ function ImageSpinner() {
   const [smiskiIndex, setSmiskiIndex] = useState(null);
   const [points, setPoints] = useState(0);
   const { isAuthenticated, user } = useAuth0();
+  const showSuccessNotification = () => {
+    toast.success(`Added to your collection!`, {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      style: { 
+        background: "#f7d79f", 
+        color: "#2d4849",
+        border: "1px solid #2d4849", 
+        fontFamily: "Quicksand, sans-serif"
+      },
+    });
+  };
 
   const resetState = () => {
     setCurrentImage(images[0]);
@@ -152,6 +173,7 @@ function ImageSpinner() {
 
         if (isAuthenticated && user?.email) {
           addSmiski(user.email, finalSmiski);
+          showSuccessNotification();
         }
       }
     }, intervalTime);
@@ -165,7 +187,7 @@ function ImageSpinner() {
         Your Points: {points !== null ? points : "Loading..."}
       </h2>
       <img src={`../../${currentImage}.png`} className="smiskiBox"></img>
-      <button onClick={cycleImage} disabled={spinning}>
+      <button onClick={cycleImage} disabled={spinning} className="spinnerContainer-button">
         {spinning ? "Spinning..." : "Spin"}
       </button>
       {smiski && !spinning && (
@@ -186,8 +208,18 @@ function ImageSpinner() {
           <p>Congrats! You got Smiski {smiski.replace(/_/g, " ")} from the {currentImage} series!</p>
         </motion.div>
       )}
+      <ToastContainer position="bottom-left" autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='light'/>
     </div>
   );
+
 }
 
 export default ImageSpinner;
