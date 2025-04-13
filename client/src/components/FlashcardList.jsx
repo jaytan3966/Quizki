@@ -63,7 +63,8 @@ export default function FlashcardList() {
   if (loading) return <div>Loading flashcards...</div>;
 
   return (
-    <div>
+    <div className='flashcard-list'>
+      <h2>Your Flashcard Groups</h2>
       {!selectedGroup ? (
         <div className="flashcard-groups">
           {groups.map((group) => (
@@ -79,11 +80,7 @@ export default function FlashcardList() {
         </div>
       ) : filteredFlashcards.length > 0 ? (
         <div>
-          <div className="back">
-            <button onClick={() => setSelectedGroup(null)} className="back-button">
-              Back to Groups
-            </button>
-          </div>
+          
 
           <div className="flashcard-container">
             <Flashcard flashcard={filteredFlashcards[currentFlashcardIndex]} />
@@ -92,6 +89,9 @@ export default function FlashcardList() {
           <div className="navigation-buttons">
             <button onClick={handlePreviousFlashcard} className="prev-button">
               Previous
+            </button>
+            <button onClick={() => setSelectedGroup(null)} className="back-button">
+              Back to Groups
             </button>
             <button onClick={handleNextFlashcard} className="next-button">
               Next

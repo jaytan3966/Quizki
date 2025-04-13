@@ -159,17 +159,19 @@ export default function Create() {
                 <h2>Edit Your Flashcard Groups</h2>
                 
                 <div className="group-list view-flashcards-button group-flashcards">
-                  {groups.map((group) => (
-                    <button
-                      key={group}
-                      onClick={() => {
-                        setSelectedGroup(group);
-                        setCurrentPage("create");
-                      }}
-                    >
-                      {group}
-                    </button>
-                  ))}
+                  <div className="groups-button-container">
+                    {groups.map((group) => (
+                      <button
+                        key={group}
+                        onClick={() => {
+                          setSelectedGroup(group);
+                          setCurrentPage("create");
+                        }}
+                      >
+                        {group}
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <div className="create-view-container">
                   <button onClick={() => setCurrentPage("create-group")}>

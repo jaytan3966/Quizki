@@ -33,7 +33,7 @@ export const Collection = () => {
   return (
     <div className="outer-container">
       <div className="collection-header">
-        <h1>My Smiski Collection</h1>
+        <h1>My Smiskis</h1>
       </div>
 
       <div className="series-header">
