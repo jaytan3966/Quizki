@@ -3,6 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import "./Study.css";
 import LoginButton from "../components/LoginButton";
+import Chatbot from "../components/Chatbot";
 
 export default function Study() {
   const [terms, setTerms] = useState([]); // All terms fetched from the backend
@@ -115,6 +116,7 @@ export default function Study() {
         >
           Edit Flashcards
         </button>
+        <Chatbot />
       </div>
     );
   }
