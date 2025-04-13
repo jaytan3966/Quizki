@@ -173,7 +173,9 @@ function ImageSpinner() {
 
         if (isAuthenticated && user?.email) {
           addSmiski(user.email, finalSmiski);
-          showSuccessNotification();
+          setTimeout(() => {
+            showSuccessNotification();
+          }, 1500);
         }
       }
     }, intervalTime);
