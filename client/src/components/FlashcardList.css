@@ -6,13 +6,6 @@
     margin-top: 20px;
     color: #2d4849;
 }
-.flashcard-groups {
-    display: grid; /* Use CSS Grid for layout */
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Create responsive columns */
-    justify-content: center; /* Center the grid horizontally */
-    padding: 10px;
-    position: relative;
-}
 
 .flashcard-groups button {
     display: block;

@@ -175,7 +175,7 @@ function ImageSpinner() {
           addSmiski(user.email, finalSmiski);
           setTimeout(() => {
             showSuccessNotification();
-          }, 1500);
+          }, 2000);
         }
       }
     }, intervalTime);

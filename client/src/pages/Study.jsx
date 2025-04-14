@@ -5,6 +5,9 @@ import "./Study.css";
 import LoginButton from "../components/LoginButton";
 import Chatbot from "../components/Chatbot";
 
+import {ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Study() {
   const [terms, setTerms] = useState([]); // All terms fetched from the backend
   const [groupedTerms, setGroupedTerms] = useState({}); // Terms grouped by language (only non-empty groups)
@@ -13,6 +16,61 @@ export default function Study() {
   const { user, isLoading } = useAuth0();
   const navigate = useNavigate();
 
+
+  const notification = (text, success) => {
+    if (success === "100") {
+      toast.success(`${text}`, {
+        position: "bottom-left",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { 
+          background: "#f7d79f", 
+          color: "#2d4849",
+          border: "1px solid #2d4849", 
+          fontFamily: "Quicksand, sans-serif"
+        },
+      });
+    } else if (success === "missed"){
+      toast.warning(`${text}`, {
+        position: "bottom-left",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { 
+          background: "#f7d79f", 
+          color: "#2d4849",
+          border: "1px solid #2d4849", 
+          fontFamily: "Quicksand, sans-serif"
+        },
+      });
+    } else {
+      toast.error(`${text}`, {
+        position: "bottom-left",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        style: { 
+          background: "#f7d79f", 
+          color: "#2d4849",
+          border: "1px solid #2d4849", 
+          fontFamily: "Quicksand, sans-serif"
+        },
+      });
+    }
+  };
   // Fetch terms from the backend and filter out empty groups
   async function fetchTerms() {
     try {
@@ -72,18 +130,29 @@ export default function Study() {
     });
 
     const score = Math.round((correct / selectedTerms.length) * 100);
-    alert(`You scored ${score}% (${correct} out of ${selectedTerms.length})`);
+    if (score === 0) {
+      notification("You scored 0%. Better luck next time!", "cooked");
+    } else if (score === 100){
+      notification("Perfect score! You got 100%!", "100");
+    } else {
+      notification(`You scored ${score}% (${correct} out of ${selectedTerms.length})`, "missed");
+    }
 
     if (score === 100) {
       // Award points for a perfect score
-      fetch(`http://localhost:5050/records/balance/${user.email}/10`, {
+      fetch(`http://localhost:5050/records/balance/${user.email}/100`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
       });
-      alert("You have received 10 points for scoring 100%!");
+      setTimeout(() => {
+        notification("Congratulations! You've earned 100 points for a perfect score!", "100");
+      }, 1000);
     }
+    setTimeout(() => {
+      navigate("/");
+    }, 4000);
   };
 
   // Fetch terms when the user logs in
@@ -139,42 +208,54 @@ export default function Study() {
           </div>
         </div>
       ) : (
-        <div className="test-container">
-          <h1>Test: {selectedGroup}</h1>
-          <div className="questions-container">
-            {groupedTerms[selectedGroup].map((term, index) => (
-              <div key={term.id} className="question-row">
-                <div className="question-number">
-                  <h2>{index + 1}.</h2>
+        <div>
+          <h1>Practice Test: {selectedGroup}</h1>
+          <div className="test-container">
+          
+            <div className="questions-container">
+              {groupedTerms[selectedGroup].map((term, index) => (
+                <div key={term.id} className="question-row">
+                  <div className="question-number">
+                    <h2>{index + 1}.</h2>
+                  </div>
+                  <div className="question-content">
+                    <p>{term.term}</p>
+                    <input
+                      type="text"
+                      value={answers[term.id] || ""}
+                      onChange={(e) =>
+                        handleAnswerChange(term.id, e.target.value)
+                      }
+                      placeholder="Your answer..."
+                      className="answer-input"
+                    />
+                  </div>
                 </div>
-                <div className="question-content">
-                  <p>{term.term}</p>
-                  <input
-                    type="text"
-                    value={answers[term.id] || ""}
-                    onChange={(e) =>
-                      handleAnswerChange(term.id, e.target.value)
-                    }
-                    placeholder="Your answer..."
-                    className="answer-input"
-                  />
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
           <div className="test-buttons">
-            <button className="submit-button" onClick={handleSubmit}>
-              Submit Answers
-            </button>
-            <button
-              className="back-button"
-              onClick={() => setSelectedGroup(null)}
-            >
-              Back to Group Selection
-            </button>
-          </div>
+          <button className="submit-button" onClick={handleSubmit}>
+            Submit Answers
+          </button>
+          <button
+            className="back-button"
+            onClick={() => setSelectedGroup(null)}
+          >
+            Back to Group Selection
+          </button>
         </div>
+      </div>
       )}
+      <ToastContainer position="bottom-left" autoClose={2500}
+                    hideProgressBar={false}
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme='light'/>
     </div>
   );
 }

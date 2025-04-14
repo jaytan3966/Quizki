@@ -64,15 +64,15 @@ export default function FlashcardList() {
 
   return (
     <div className='flashcard-list'>
-      <h2>Your Flashcard Groups</h2>
+      
       {!selectedGroup ? (
         <div className="flashcard-groups">
+          <h2>Your Flashcard Groups</h2>
           {groups.map((group) => (
             <button
 
               key={group}
               onClick={() => handleGroupClick(group)}
-              className="group-button"
             >
               {group}
             </button>
@@ -80,7 +80,7 @@ export default function FlashcardList() {
         </div>
       ) : filteredFlashcards.length > 0 ? (
         <div>
-          
+          <h2>Your Flashcard Groups</h2>
 
           <div className="flashcard-container">
             <Flashcard flashcard={filteredFlashcards[currentFlashcardIndex]} />

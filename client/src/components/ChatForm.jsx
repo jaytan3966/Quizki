@@ -35,7 +35,7 @@ const ChatForm = ({ chatHistory, setChatHistory, generateBotResponse }) => {
       <input
         ref={inputRef}
         type="text"
-        placeholder="Type your message..."
+        placeholder="'Make me flashcards for algebra...'"
         className="message-input"
         required
       />
