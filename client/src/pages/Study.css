@@ -57,23 +57,6 @@
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
-.submit-button {
-  padding: 0.75rem 1.5rem;
-  background-color: #bcdad3;
-  color: white;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  cursor: pointer;
-  justify-self: center;
-  margin-top: 1rem;
-  transition: background-color 0.2s;
-}
-
-.submit-button:hover {
-  background-color: #3a5a80;
-}
-
 .text {
   display: flex;
   flex-direction: column; /* Stack content vertically */
@@ -83,61 +66,78 @@
   text-align: center; /* Center the text */
   color: #2d4849; /* Text color */
   font-size: 1.5rem; /* Font size for the text */
+  
 }
 
 .group-selection {
-  text-align: center;
-}
-
-.group-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.group-button {
-  padding: 10px 20px;
-  background-color: #fbeac5;
+  margin-top: 20px;
   color: #2d4849;
-  border: 2px solid #2d4849;
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.group-button:hover {
-  background-color: #2d4849;
-  color: white;
+  text-align: center;
 }
 
 .test-container {
   text-align: center;
+  border: 4px solid #2d4849;
+  border-radius: 20px;
+  background-color: #fbeac5;
+  margin: 10px;
+  padding: 20px;
+  min-height: 77vh;
 }
 
-.test-container h1 {
+h1 {
   text-align: center; /* Center the heading */
   font-size: 2rem; /* Adjust font size for better visibility */
-  margin-bottom: 20px; /* Add spacing below the heading */
+  margin: 20px; /* Add spacing below the heading */
   color: #2d4849; /* Ensure consistent text color */
 }
-
-.back-button {
-  margin-top: 1rem;
-  padding: 10px 20px;
-  background-color: #bcdad3;
-  color: white;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 1rem;
+p{
+  color: #2d4849;
+  align-items: center;
+}
+.test-buttons{
+  display: grid; /* Use CSS Grid for layout */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Create responsive columns */
+    justify-content: center; /* Center the grid horizontally */
+    padding: 10px;
+    padding-top: 0;
+    position: relative;
+}
+.test-buttons button{
+  display: block;
+    border: 4px solid #2d4849;
+    border-radius: 20px;
+    background-color: #fbeac5;
+    font-size: 1.4rem;
+    color: #2d4849;
+    width: auto; /* Make the button fill the grid cell */
+    height: 55px;
+    text-align: center; /* Center the text inside the button */
+}
+.test-buttons button:hover{
   cursor: pointer;
+  background-color: #2d4849;
+  color: white;
 }
-
-.back-button:hover {
-  background-color: #3a5a80;
+.group-buttons{
+  padding: 10px;
 }
-
+.group-buttons button {
+  display: block;
+    border: 4px solid #2d4849;
+    border-radius: 20px;
+    background-color: #fbeac5;
+    font-size: 1.4rem;
+    color: #2d4849;
+    width: 100%; /* Make the button fill the grid cell */
+    height: 100px;
+    text-align: center;
+}
+.group-buttons button:hover {
+  cursor: pointer;
+  background-color: #2d4849;
+  color: white;
+}
 .profileInfo {
   display: flex;
   flex-direction: column;
