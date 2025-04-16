@@ -32,21 +32,20 @@ async function fetchData(email){
   );
   const terms = result[0]?.terms || [];
 
-  const formattedFlashcards = terms.flatMap((languageGroup) => {
+  const allGroups = terms.flatMap((languageGroup) => {
     const [type, pairs] = Object.entries(languageGroup)[0];
-    return Object.entries(pairs).map(([q, a], i) => ({
-      id: `${type}-${i}`,
-      question: q,
-      answer: a,
-      group: type.charAt(0).toUpperCase() + type.slice(1),
-    }));
+    return type.charAt(0).toUpperCase() + type.slice(1);
   });
-  return [uniqueSmiskisData, formattedFlashcards];
 
+  const uniqueGroups = [...new Set(allGroups)];
+  const formattedFlashcards = uniqueGroups.map(group => ({ 
+    group: group 
+  }));
+  return [uniqueSmiskisData, formattedFlashcards];
 }
 
 export const HomePage = () => {
-  const { isAuthenticated, user } = useAuth0();
+  const {isAuthenticated, user } = useAuth0();
 
   const [points, setPoints] = useState(null);
   const [numCollected, setNumCollected] = useState(null);
@@ -54,7 +53,7 @@ export const HomePage = () => {
   const [smiskis, setSmiskis] = useState([]); // State for unlocked Smiskis
   const [flashcards, setFlashcards] = useState([]); // State for flashcards
   
-  //fetch profile info
+  //fetch profile info 
   useEffect(() => {
       
       if (isAuthenticated && user.email) {
@@ -109,7 +108,6 @@ export const HomePage = () => {
           Smiskis Collected:{" "}
           {numCollected !== null ? numCollected : "Loading..."}
         </p>
-        <LogoutButton additionalStyles="profile-button" />
         <Chatbot />
       </div>
 
@@ -150,8 +148,7 @@ export const HomePage = () => {
           {flashcards.length > 0 ? (
             flashcards.slice(0, 5).map((flashcard) => (
               <div key={flashcard.id} className="flashcard-item">
-                <p className="flashcard-question">{flashcard.question}</p>
-                <p className="flashcard-answer">{flashcard.answer}</p>
+                <h2 className="flashcard-group">{flashcard.group}</h2>
               </div>
             ))
           ) : (
@@ -159,6 +156,10 @@ export const HomePage = () => {
           )}
         </div>
       </section>
+      <div className="logout-button">
+        <LogoutButton additionalStyles="profile-button" />
+      </div>
+      
     </div>
   );
 }

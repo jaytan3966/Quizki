@@ -193,7 +193,7 @@ export default function Study() {
   return (
     <div className="study-page">
       {!selectedGroup ? (
-        <div className="group-selection">
+        <div className="test-page">
           <h2>Select a Group to Start the Test</h2>
           <div className="group-buttons">
             {Object.keys(groupedTerms).map((group) => (
@@ -208,8 +208,8 @@ export default function Study() {
           </div>
         </div>
       ) : (
-        <div>
-          <h1>Practice Test: {selectedGroup}</h1>
+        <div className="test-page">
+          <h2>Practice Test: {selectedGroup}</h2>
           <div className="test-container">
           
             <div className="questions-container">

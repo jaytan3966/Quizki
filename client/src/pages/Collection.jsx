@@ -33,11 +33,11 @@ export const Collection = () => {
   return (
     <div className="outer-container">
       <div className="collection-header">
-        <h1>My Smiskis</h1>
+        <h2>My Smiskis</h2>
       </div>
 
       <div className="series-header">
-        <h1>Sunday Series</h1>
+        <h2>Sunday Series</h2>
       </div>
       <div className="series-image1">
         <div>
@@ -91,7 +91,7 @@ export const Collection = () => {
       </div>
 
       <div className="series-header">
-        <h1>Exercising Series</h1>
+        <h2>Exercising Series</h2>
       </div>
       <div className="series-image2">
         <div>
@@ -145,7 +145,7 @@ export const Collection = () => {
       </div>
 
       <div className="series-header">
-        <h1>Bath Series</h1>
+        <h2>Bath Series</h2>
       </div>
       <div className="series-image3">
         <div>
@@ -200,7 +200,7 @@ export const Collection = () => {
 
       {/* toilet series smiski */}
       <div className="series-header">
-        <h1>Toilet Series</h1>
+        <h2>Toilet Series</h2>
       </div>
       <div className="series-image4">
         <div>
@@ -249,7 +249,7 @@ export const Collection = () => {
 
       {/* work series smiski */}
       <div className="series-header">
-        <h1>At Work Series</h1>
+        <h2>At Work Series</h2>
       </div>
       <div className="series-image5">
         <div>
