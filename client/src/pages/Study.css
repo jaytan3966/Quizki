@@ -83,12 +83,13 @@ p {
   align-items: center;
 }
 .test-buttons{
-  display: grid; /* Use CSS Grid for layout */
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Create responsive columns */
-  justify-content: center; /* Center the grid horizontally */
-  padding: 10px;
-  padding-top: 0;
-  position: relative;
+  display: flex;
+  gap: 10px;          
+  align-items: center;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
 }
 .test-buttons button{
   display: block;
@@ -96,10 +97,13 @@ p {
     border-radius: 20px;
     background-color: #fbeac5;
     font-size: 1.4rem;
+    padding: 10px 20px;
     color: #2d4849;
-    width: auto; /* Make the button fill the grid cell */
-    height: 55px;
-    text-align: center; /* Center the text inside the button */
+    flex: column;
+    width: 45%;
+    height: 100%;
+    margin: auto;
+    margin-top: 10px;
 }
 .test-buttons button:hover{
   cursor: pointer;
