@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import Flashcard from './Flashcarddata.jsx';
 import './FlashCardList.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function FlashcardList() {
   const [selectedGroup, setSelectedGroup] = useState(null);
@@ -9,6 +10,7 @@ export default function FlashcardList() {
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth0();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFlashcards = async () => {
@@ -78,6 +80,11 @@ export default function FlashcardList() {
                 {group}
               </button>
             ))}
+          </div>
+          <div className="navigation-buttons">
+            <button className="prev-button" onClick={() => navigate("/create")}>
+                Edit Cards
+            </button>
           </div>
         </div>
       ) : filteredFlashcards.length > 0 ? (
