@@ -9,8 +9,13 @@ export default function FlashcardList() {
   const [SAMPLE_FLASHCARDS, setFlashcards] = useState([]);
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
   const { user } = useAuth0();
   const navigate = useNavigate();
+
+  useEffect(() => {
+      setIsFlipped(false);
+    }, [currentFlashcardIndex]);
 
   useEffect(() => {
     const fetchFlashcards = async () => {
@@ -92,7 +97,8 @@ export default function FlashcardList() {
           <h2>{selectedGroup} Flashcards</h2>
 
           <div className="flashcard-container">
-            <Flashcard flashcard={filteredFlashcards[currentFlashcardIndex]} />
+            <Flashcard flashcard={filteredFlashcards[currentFlashcardIndex]} isFlipped={isFlipped}
+  setIsFlipped={setIsFlipped}/>
           </div>
 
           <div className="navigation-buttons">
