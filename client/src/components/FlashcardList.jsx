@@ -68,19 +68,21 @@ export default function FlashcardList() {
       {!selectedGroup ? (
         <div className="flashcard-groups">
           <h2>Your Flashcard Groups</h2>
-          {groups.map((group) => (
-            <button
+          <div className="group-buttons">
+            {groups.map((group) => (
+              <button
 
-              key={group}
-              onClick={() => handleGroupClick(group)}
-            >
-              {group}
-            </button>
-          ))}
+                key={group}
+                onClick={() => handleGroupClick(group)}
+              >
+                {group}
+              </button>
+            ))}
+          </div>
         </div>
       ) : filteredFlashcards.length > 0 ? (
         <div>
-          <h2>Your Flashcard Groups</h2>
+          <h2>{selectedGroup} Flashcards</h2>
 
           <div className="flashcard-container">
             <Flashcard flashcard={filteredFlashcards[currentFlashcardIndex]} />

@@ -16,7 +16,7 @@ export const Gacha = () => {
   return (
     <>
       <div className="gachaContainer">
-        <h1>Gacha</h1>
+        <h2>Gacha</h2>
         <h2>100 Points to Play</h2>
         <ImageSpinner />
       </div>

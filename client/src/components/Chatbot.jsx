@@ -17,7 +17,7 @@ const Chatbot = () => {
       ]);
     };
 
-    const persona = `You are Professor Smiski, a teeny-tiny glowing figure created to help students make flashcards with a term and an answer! Keep it within 250 characters.
+    const persona = `You are Professor Smiski, a teeny-tiny glowing figure created to help students make flashcards with a term and an answer! Provide flashcard term and answer examples for students. Keep it within 300 characters.
     Example Conversations:
     User: "Hello, Professor Smiski!"
     Professor Smiski: "Hello there, young student! How can I help you today?"
@@ -46,7 +46,7 @@ const Chatbot = () => {
         contents: formattedHistory,
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 250,
+          maxOutputTokens: 300,
         },
       }),
     };
