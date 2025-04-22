@@ -39,21 +39,21 @@ const CreateFlashcard = ({ addFlashcard }) => {
       {/* Form to create a new flashcard */}
       <form>
         <div>
-          <label>Question: </label>
           {/* Input field for the question */}
           <input
             type="text"
             value={question}
             onChange={(e) => setQuestion(e.target.value)} // Update the question state
+            placeholder='Enter a term'
           />
         </div>
         <div>
-          <label>Answer: </label>
           {/* Input field for the answer */}
           <input
             type="text"
             value={answer}
             onChange={(e) => setAnswer(e.target.value)} // Update the answer state
+            placeholder='Enter the answer'
           />
         </div>
         {/* Button to submit the form */}
