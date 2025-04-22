@@ -15,7 +15,7 @@ const created = (text) => toast.success(`${text}`, {
   progressStyle: { background: "#2E7D32" },
 });
 const failed = (text) => toast.error(`${text}`, {
-  style: { background: "#FF0000", color: "#2d4849" , border: "1px solid #2d4849", fontFamily: "Quicksand, sans-serif"},
+  style: { background: "#f7d79f", color: "#2d4849" , border: "1px solid #2d4849", fontFamily: "Quicksand, sans-serif"},
   progressStyle: { background: "#2E7D32" },
 });
 export default function Create() {
@@ -64,6 +64,8 @@ export default function Create() {
   const [currentPage, setCurrentPage] = useState("choose");
 
   const [selectedGroup, setSelectedGroup] = useState(null);
+
+  const [newGroup, setNewGroup] = useState("");
 
   const navigate = useNavigate();
 
@@ -121,6 +123,23 @@ export default function Create() {
     } catch (error) {
       console.error("Error creating group:", error);
       throw error; // Re-throw for error handling in components
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    if (newGroup.trim()) {
+      // If both fields are filled, add the flashcard
+      try {
+        createGroup(newGroup); // Create the group
+        created("Group created!"); // Show success message
+        setCurrentPage("choose"); // Navigate back to the "choose" page
+      } catch (error) {
+        failed("Failed to create group. Please try again."); // Handle errors
+      }
+    } else {
+      // Alert the user if either field is empty
+      failed("Please fill in group field.");
     }
   };
 
@@ -214,27 +233,17 @@ export default function Create() {
       {/* Create group page */}
       {currentPage === "create-group" && (
         <div className="view-flashcards-button">
-        <div className="create-group-container">
-          <h2>Create a New Group</h2>
-          <input
-            type="text"
-            placeholder="Enter group name"
-            onKeyDown={async (e) => {
-              if (e.key === "Enter" && e.target.value.trim() !== "") {
-                const groupName = e.target.value.trim();
-                try {
-                  await createGroup(groupName); // Create the group
-                  created("Group created!"); // Show success message
-                  setCurrentPage("choose"); // Navigate back to the "choose" page
-                } catch (error) {
-                  failed("Failed to create group. Please try again."); // Handle errors
-                }
-              }
-            }}
-          />
-        </div>
-        <div className="create-view-container">
-          <button onClick={() => setCurrentPage("choose")}>Back</button>
+          <div className="create-group-container">
+            <h2>Create a New Group</h2>
+            <input
+              type="text"
+              placeholder="Enter group name"
+              onChange={(e) => setNewGroup(e.target.value)}
+            />
+            <button type="submit" onClick={handleSubmit} className='create-flashcard-button'>Add Flashcard</button>
+          </div>
+          <div className="create-view-container">
+            <button onClick={() => setCurrentPage("choose")}>Back</button>
           </div>
         </div>
       )}
