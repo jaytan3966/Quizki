@@ -1,4 +1,4 @@
-# Mysterybox
+# Quizki
 
 Engaging study tool web application for DiamondHacks 2025
 
