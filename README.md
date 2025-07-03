@@ -1,17 +1,24 @@
-# Mysterybox
+# Quizki - Gamified Learning with Gacha Rewards
+A Quizlet-inspired web app with addictive gacha mechanics and an AI study buddy, built with the MERN stack and cutting-edge APIs.
 
-Engaging study tool web application for DiamondHacks 2025
+## Key Features
+- Gacha Game Mechanics
+  - Spin-to-Learn: Earn gacha pulls by completing study sessions
+  - Collection Tracker: Show off your earned Smiskis
 
-## Running the Project
+- AI-Powered Learning
+  - Gemini API Study Buddy: Get explanations or generate flashcard terms and answers in conversational style
+  - "Quiz Me" Mode: practice questions from your flashcards
 
-### Backend
-1. `cd server` to enter the backend directory
-2. `npm install` to install any dependencies
-3. `npm run start` to run the backend
+## Tech Stack
+- Frontend
+  - ReactJS
+  - CSS
+  - Auth0 (Authentication)
 
-### Frontend
-1. `cd client` to enter the frontend directory
-2. `npm install` to install any dependencies
-3. `npm run dev` to run the frontend
+- Backend
+  - Node.js + Express
+  - MongoDB (Atlas)
+  - Gemini API (Google AI)
 
-Created using MongoDB, ExpressJS, ReactJS, NodeJS, with OAuth used to handle user authentication, and Gemini API for our chatbot.
+## Built with ❤️ by the Quizki DiamondHacks Team 2025 - Jayden Tan, Emmanuel Nader, Jordan Junaidi, Amy Trinh
